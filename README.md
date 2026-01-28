@@ -106,3 +106,16 @@ I added a custom fully connected neural network for classification:
 * **Training Accuracy:** ~72.8%
 * **Validation Accuracy:** ~68.1%
 * ** Next Step**: Fine-Tuning is necessary. By unfreezing the last few layers of VGG19 and retraining on the GPU server, it will allow the "eyes" of the model to adapt specifically to MRI scans, which should smooth out those red lines and push accuracy above 90%.
+
+## Reference Paper
+The VGG19 architecture used in this project was introduced by the Visual Geometry Group at Oxford University.Title: Very Deep Convolutional Networks for Large-Scale Image RecognitionAuthors: Karen Simonyan, Andrew ZissermanConference: ICLR 2015Link: arXiv:1409.1556
+BibTeX:
+```
+@article{simonyan2014very,
+  title={Very deep convolutional networks for large-scale image recognition},
+  author={Simonyan, Karen and Zisserman, Andrew},
+  journal={arXiv preprint arXiv:1409.1556},
+  year={2014}
+}
+```
+Why this paper matters:This paper demonstrated that increasing the depth of a network (up to 19 layers) using very small ($3 \times 3$) convolution filters significantly improves image recognition accuracy. This architecture became a standard benchmark in computer vision due to its uniform and simple design.
