@@ -51,7 +51,7 @@ The data was split into three sets:
 
 ## 🧠 Model Architecture: VGG19
 
-We utilized **Transfer Learning** with the VGG19 architecture.
+I utilized **Transfer Learning** with the VGG19 architecture.
 
 ### 1. The Base (The "Eyes")
 * **Model:** VGG19 (19 layers deep).
@@ -60,7 +60,7 @@ We utilized **Transfer Learning** with the VGG19 architecture.
 * **Non-Trainable Parameters:** ~20 Million.
 
 ### 2. The Custom Head (The "Brain")
-We added a custom fully connected neural network for classification:
+I added a custom fully connected neural network for classification:
 * **Flatten Layer:** Converts the 2D feature maps from VGG into a 1D vector (25,088 values).
 * **Dense Layer 1:** 4,608 neurons with `ReLU` activation.
     * *Note: This massive layer creates 115 Million parameters, consuming ~3.5GB of RAM.*
