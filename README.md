@@ -24,6 +24,8 @@ The training graphs illustrate a model that is successfully learning patterns bu
 ---
 
 ## 📂 Dataset & Preprocessing
+![Figure Augmentation Graph](Image_processed.png)
+
 
 ### 1. Dataset Structure
 The dataset consists of MRI images separated into two classes:
@@ -50,6 +52,8 @@ The data was split into three sets:
 **Generator Configuration:**
 * **Batch Size:** 32
 * **Input Size:** 224 x 224 (Standard for VGG19)
+
+![Total picture count Graph](Image_count.png)
 
 ## 🧠 Model Architecture: VGG19
 
