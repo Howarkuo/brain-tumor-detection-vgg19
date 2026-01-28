@@ -16,6 +16,8 @@ The training graphs illustrate a model that is successfully learning patterns bu
 * While the **Training Loss** continued to decrease, the **Validation Loss** hit its lowest point at Epoch 10 and began to rise.
 * The system automatically halted training at **Epoch 14** to prevent further degradation of the model.
 
+<span style="color:red">**Next Step: Fine-Tuning is necessary.** By unfreezing the last few layers of VGG19 and retraining on the GPU server, it will allow the "eyes" of the model to adapt specifically to MRI scans, which should smooth out those red lines and push accuracy above 90%.</span>
+
 > **Note on Hardware:** The high resource consumption observed during this phase (High CPU/RAM usage) validates the decision to migrate training to the Linux server with dedicated GPU resources for subsequent Fine-Tuning.
 165
 
@@ -105,17 +107,20 @@ I added a custom fully connected neural network for classification:
 ## Results (Phase 1: Frozen Base)
 * **Training Accuracy:** ~72.8%
 * **Validation Accuracy:** ~68.1%
-* ** Next Step**: Fine-Tuning is necessary. By unfreezing the last few layers of VGG19 and retraining on the GPU server, it will allow the "eyes" of the model to adapt specifically to MRI scans, which should smooth out those red lines and push accuracy above 90%.
-
+<span style="color:red">**Next Step: Fine-Tuning is necessary.** By unfreezing the last few layers of VGG19 and retraining on the GPU server, it will allow the "eyes" of the model to adapt specifically to MRI scans, which should smooth out those red lines and push accuracy above 90%.</span>
 ## Reference Paper
-The VGG19 architecture used in this project was introduced by the Visual Geometry Group at Oxford University.Title: Very Deep Convolutional Networks for Large-Scale Image RecognitionAuthors: Karen Simonyan, Andrew ZissermanConference: ICLR 2015Link: arXiv:1409.1556
-BibTeX:
-```
+The **VGG19** architecture used in this project was introduced by the Visual Geometry Group at Oxford University.
+
+* **Title:** Very Deep Convolutional Networks for Large-Scale Image Recognition
+* **Authors:** Karen Simonyan, Andrew Zisserman
+* **Conference:** ICLR 2015
+* **Link:** [arXiv:1409.1556](https://arxiv.org/abs/1409.1556)
+
+**BibTeX:**
+```bibtex
 @article{simonyan2014very,
   title={Very deep convolutional networks for large-scale image recognition},
   author={Simonyan, Karen and Zisserman, Andrew},
   journal={arXiv preprint arXiv:1409.1556},
   year={2014}
 }
-```
-Why this paper matters:This paper demonstrated that increasing the depth of a network (up to 19 layers) using very small ($3 \times 3$) convolution filters significantly improves image recognition accuracy. This architecture became a standard benchmark in computer vision due to its uniform and simple design.
