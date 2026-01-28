@@ -1,6 +1,25 @@
 # Brain Tumor Detection using VGG19
 
-This project implements a Convolutional Neural Network (CNN) based on the **VGG19** architecture to detect brain tumors from MRI scans. It utilizes Transfer Learning by leveraging pre-trained ImageNet weights to classify images into two categories: `Tumorous` (Yes) and `Non-Tumorous` (No).
+Implements a Convolutional Neural Network (CNN) based on the **VGG19** architecture to detect brain tumors from MRI scans. It utilizes Transfer Learning by leveraging pre-trained ImageNet weights to classify images into two categories: `Tumorous` (Yes) and `Non-Tumorous` (No).
+![Training Performance Graph](training_frozencnn.jpeg)
+
+### Performance Analysis
+The training graphs illustrate a model that is successfully learning patterns but hitting a performance "ceiling" due to the frozen VGG19 base.
+
+#### 1. Accuracy (Left Graph)
+* **The Blue Line (Training):** Climbs steadily from **56% to 73%**. This indicates the custom dense layers are successfully learning to classify the training images.
+* **The Red Line (Validation):** Shows high volatility. It peaks early at **72% (Epoch 6)** but fluctuates significantly and eventually drops to **~68%**.
+* **Interpretation:** The widening gap between the blue and red lines indicates **Overfitting**. The model is beginning to "memorize" the training data specificities rather than generalizing well to new, unseen MRI scans.
+
+#### 2. Loss (Right Graph)
+* **EarlyStopping ("The Quitter"):** functioned correctly.
+* While the **Training Loss** continued to decrease, the **Validation Loss** hit its lowest point at Epoch 10 and began to rise.
+* The system automatically halted training at **Epoch 14** to prevent further degradation of the model.
+
+> **Note on Hardware:** The high resource consumption observed during this phase (High CPU/RAM usage) validates the decision to migrate training to the Linux server with dedicated GPU resources for subsequent Fine-Tuning.
+165
+
+---
 
 ## 📂 Dataset & Preprocessing
 
@@ -86,4 +105,4 @@ We added a custom fully connected neural network for classification:
 ## Results (Phase 1: Frozen Base)
 * **Training Accuracy:** ~72.8%
 * **Validation Accuracy:** ~68.1%
-* *Note:* The model successfully transferred knowledge from ImageNet to MRI scans. Further fine-tuning (unfreezing blocks) is recommended to exceed 90% accuracy.
+* ** Next Step**: Fine-Tuning is necessary. By unfreezing the last few layers of VGG19 and retraining on the GPU server, it will allow the "eyes" of the model to adapt specifically to MRI scans, which should smooth out those red lines and push accuracy above 90%.
