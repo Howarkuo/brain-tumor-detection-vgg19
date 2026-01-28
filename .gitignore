@@ -1,0 +1,19 @@
+# --- Ignore Data & Weights ---
+dataset_split/
+tumorous_and_nontumorous/
+augmented_data/
+yes/
+no/
+*.h5
+*.keras
+*.zip
+
+# --- Ignore Environment & Cache ---
+brain-tumor-detection-vgg19_env/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+# --- Ignore Logs ---
+log/
+gpu_log.csv
